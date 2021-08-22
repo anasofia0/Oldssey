@@ -7,8 +7,11 @@ public class Inventory : MonoBehaviour
 {
     public int sizeOfInventory = 4;
     public InventorySlots[] slots;
+    public Image[] imagensSenha;
+    public int[] senha, entrada = new int[sizeOfInventory];
     // public List<Item> inventory = new List<Item>();
     private ItemDatabase database;
+    private int indexAtual;
 
     void Start()
     {
@@ -34,6 +37,24 @@ public class Inventory : MonoBehaviour
             slots[index].ID = ID;
         } else
             Debug.Log("inventário cheio");
+    }
+
+    public void AddSenha(string itemID){
+
+        int ID = int.Parse(itemID);
+        /*
+        if(indexAtual < sizeOfInventory
+
+        muda imagem de acordo com o ind
+        imagemSenha[indexAtual].sprite = database.items[ID].itemIcon
+        entrada[index] = id
+
+        index atual ++
+
+        else
+
+        chama função que compara os arrays senha, entrada
+        */
     }
 
 }
