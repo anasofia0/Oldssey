@@ -11,9 +11,10 @@ public class Inventory : MonoBehaviour
     public InventorySlots[] slots;
     public Image[] imagensSenha;
     public int[] senha, entrada = new int[4];
+    public bool podeBotar = false;
     // public List<Item> inventory = new List<Item>();
     private ItemDatabase database;
-    private int index;
+    private int indexSenha;
 
     void Start()
     {
@@ -41,48 +42,55 @@ public class Inventory : MonoBehaviour
             Debug.Log("inventário cheio");
     }
 
-    public void AddSenha(string itemID){
+    public void AddSenha(string indexBotaoPress){
 
-        int ID = int.Parse(itemID);
-        
-        if(index < sizeOfInventory)
-        {
-            // muda imagem de acordo com o ind
-            imagensSenha[index].sprite = database.items[ID].itemIcon;
-            entrada[index] = ID;
 
-            index++;
+        int indexBotao = int.Parse(indexBotaoPress);
+        if(podeBotar){
+            int ID = slots[indexBotao].ID;
+
+            if(indexSenha < sizeOfInventory)
+            {
+                // muda imagem de acordo com o ind
+                imagensSenha[indexSenha].sprite = database.items[ID].itemIcon;
+                entrada[indexSenha] = ID;
+
+                indexSenha++;
+            }
         }
+    }
 
-
-        static bool CompararArray(string[] senha, string[] entrada)
+    static bool CompararArray(string[] senha, string[] entrada)
+    {
+        if (senha.Length != entrada.Length)
         {
-            if (senha.Length != entrada.Length)
+            return false;
+        }
+        for (int i = 0; i < senha.Length; i++)
+        {
+            if (senha[i] != entrada[i])
             {
                 return false;
             }
-            for (int i = 0; i < senha.Length; i++)
-            {
-                if (senha[i] != entrada[i])
-                {
-                    return false;
-                }
-            }
-            return true;
-
-
-        
-        
-
-
         }
-
+        return true;
         //a função vai comparar se os valores de senha e entrada são iguais. se os valores forem iguais vai retornar como true, caso contrário, retorna como falso
-
-
-
-
-
     }
 
+    public void Clear(){
+        for(int i = 0; i < 4; i++){
+            imagensSenha[i].sprite = null;
+            entrada[i] = -1;
+        }
+        indexSenha = 0;
+    }
+
+    public void AtivaSenhaInventario(){
+        podeBotar = true;
+    }
+
+
+    public void DesativaSenhaInventario(){
+        podeBotar = false;
+    }
 }
