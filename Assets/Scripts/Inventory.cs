@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,10 +10,10 @@ public class Inventory : MonoBehaviour
     public int sizeOfInventory = 4;
     public InventorySlots[] slots;
     public Image[] imagensSenha;
-    public int[] senha, entrada = new int[sizeOfInventory];
+    public int[] senha, entrada = new int[4];
     // public List<Item> inventory = new List<Item>();
     private ItemDatabase database;
-    private int indexAtual;
+    private int index;
 
     void Start()
     {
@@ -42,19 +44,45 @@ public class Inventory : MonoBehaviour
     public void AddSenha(string itemID){
 
         int ID = int.Parse(itemID);
-        /*
-        if(indexAtual < sizeOfInventory
+        
+        if(index < sizeOfInventory)
+        {
+            // muda imagem de acordo com o ind
+            imagensSenha[index].sprite = database.items[ID].itemIcon;
+            entrada[index] = ID;
 
-        muda imagem de acordo com o ind
-        imagemSenha[indexAtual].sprite = database.items[ID].itemIcon
-        entrada[index] = id
+            index++;
+        }
 
-        index atual ++
 
-        else
+        static bool CompararArray(string[] senha, string[] entrada)
+        {
+            if (senha.Length != entrada.Length)
+            {
+                return false;
+            }
+            for (int i = 0; i < senha.Length; i++)
+            {
+                if (senha[i] != entrada[i])
+                {
+                    return false;
+                }
+            }
+            return true;
 
-        chama função que compara os arrays senha, entrada
-        */
+
+        
+        
+
+
+        }
+
+        //a função vai comparar se os valores de senha e entrada são iguais. se os valores forem iguais vai retornar como true, caso contrário, retorna como falso
+
+
+
+
+
     }
 
 }

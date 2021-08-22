@@ -421,7 +421,7 @@ GameObject:
   - component: {fileID: 274194862}
   - component: {fileID: 274194861}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Slot3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -686,7 +686,7 @@ GameObject:
   - component: {fileID: 496988160}
   - component: {fileID: 496988159}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Slot2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1333,7 +1333,7 @@ GameObject:
   - component: {fileID: 1695758829}
   - component: {fileID: 1695758828}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Slot1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1673,7 +1673,7 @@ GameObject:
   - component: {fileID: 1952762203}
   - component: {fileID: 1952762202}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Slot4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1907,6 +1907,9 @@ MonoBehaviour:
   - ID: 0
     item: {fileID: 1849863576}
     isEmpty: 1
+  imagensSenha: []
+  senha: 
+  entrada: 00000000000000000000000000000000
 --- !u!4 &2116748850
 Transform:
   m_ObjectHideFlags: 0
