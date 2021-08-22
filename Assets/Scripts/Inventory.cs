@@ -10,8 +10,9 @@ public class Inventory : MonoBehaviour
     public int sizeOfInventory = 4;
     public InventorySlots[] slots;
     public Image[] imagensSenha;
-    public int[] senha, entrada = new int[4];
+    public int[] senha = new int[4], entrada = new int[4];
     public bool podeBotar = false;
+    public CodigoErrado codigoErrado;
     // public List<Item> inventory = new List<Item>();
     private ItemDatabase database;
     private int indexSenha;
@@ -57,16 +58,21 @@ public class Inventory : MonoBehaviour
 
                 indexSenha++;
             }
+            if(indexSenha >= 4){
+                if(CompararArray()){
+                    Debug.Log("GANHOU MINHE QUERIDE");
+                    // ganhou
+                    // chamar tela/cena de vitória aqui
+                } else {
+                    codigoErrado.TiraBateria();
+                }
+            }
         }
     }
 
-    static bool CompararArray(string[] senha, string[] entrada)
+    private bool CompararArray()
     {
-        if (senha.Length != entrada.Length)
-        {
-            return false;
-        }
-        for (int i = 0; i < senha.Length; i++)
+        for (int i = 0; i < 4; i++)
         {
             if (senha[i] != entrada[i])
             {
@@ -74,7 +80,6 @@ public class Inventory : MonoBehaviour
             }
         }
         return true;
-        //a função vai comparar se os valores de senha e entrada são iguais. se os valores forem iguais vai retornar como true, caso contrário, retorna como falso
     }
 
     public void Clear(){

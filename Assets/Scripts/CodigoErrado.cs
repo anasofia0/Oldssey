@@ -11,14 +11,14 @@ using UnityEngine.UI;
 public class CodigoErrado : MonoBehaviour
 
 {
-    private Touch toqueTela;
-    public GameObject player;
+    //private Touch toqueTela;
+    public Sprite [] baterias = new Sprite[4];
+    public Image bateriaImagem;
     public float tempoInicial, tempoStart;
     public bool tempoAcabou;
     public Text segundos;
     private int vida_personagem;
     private int bateria = 4;
-    private int Inventorio;
 
 
     private void Start()
@@ -35,68 +35,31 @@ public class CodigoErrado : MonoBehaviour
             ContagemRegressiva();
         }
 
-        if (GameObject.FindGameObjectWithTag("Cestinha"))
-        {
-            Inventorio++;
-        }
-        else
-        {
-
-            bateria -= 1;
-        }
-
-        if (GameObject.FindGameObjectWithTag("Pacote_De_Leite"))
-        {
-            Inventorio++;
-
-        }
-        else
-        {
-
-            bateria -= 1;
-        }
-
-        if (GameObject.FindGameObjectWithTag("Caixa_De_Supermercado"))
-        {
-            Inventorio++;
-
-        }
-        else
-        {
-
-            bateria -= 1;
-        }
-
-        if (GameObject.FindGameObjectWithTag("Cartao_De_Credito"))
-        {
-            Inventorio++;
-
-        }
-        else
-        {
-
-            bateria -= 1;
-        }
-
         if (bateria == 0)
         {
+            //chamar game over aqui
             Debug.Log("Gameover");
         }
 
-
-
-
-        void ContagemRegressiva()
-        {
-            tempoInicial -= 1 * Time.deltaTime;
-            segundos.text = tempoInicial.ToString("0");
-            if (tempoInicial >= 30)
-            {
-                tempoAcabou = false;
-            }
-            if (tempoInicial < 30)
-                tempoAcabou = true;
-        }
     }
-}
 
+    public void ContagemRegressiva()
+    {
+        tempoInicial -= 1 * Time.deltaTime;
+        segundos.text = tempoInicial.ToString("0");
+        if (tempoInicial >= 30)
+        {
+            tempoAcabou = false;
+        }
+        if (tempoInicial < 30)
+            tempoAcabou = true;
+    }
+
+    public void TiraBateria(){
+        Debug.Log(bateria);
+        bateria--;
+        bateriaImagem.sprite = baterias[bateria-1];
+    }
+
+
+}
