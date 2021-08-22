@@ -7,10 +7,12 @@ public class PlayGame : MonoBehaviour {
 
         public GameObject PanelCredits;
         public GameObject PanelConfig;
+        public AudioSource Audio;
 
         public void StartGame() {
                     Debug.Log("Começa a cutscene!");
         }
+        
         public void ShowConfig() {
                if(PanelConfig != null) {
                         PanelConfig.SetActive(true);
@@ -50,12 +52,12 @@ public class PlayGame : MonoBehaviour {
               }
         }
         public void ChangeMusic() {
-              if (GameObject.Find("ButtonMusic").GetComponentInChildren<Text>().text == "Music ON") {
+              if(Audio.isPlaying) {
+                        Audio.Pause();
                         GameObject.Find("ButtonMusic").GetComponentInChildren<Text>().text = "Music OFF";
-                        Debug.Log("Music off");  
               } else {
+                        Audio.Play();
                         GameObject.Find("ButtonMusic").GetComponentInChildren<Text>().text = "Music ON";
-                        Debug.Log("Music on");  
               }
         }
 
@@ -83,4 +85,5 @@ public class PlayGame : MonoBehaviour {
         public void OpenLinkHeloisa() {
                 Application.OpenURL("https://www.linkedin.com/in/helo%C3%ADsa-rodrigues-012a577b/");
         }
+
 }
