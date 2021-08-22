@@ -9,4 +9,9 @@ public class VoltarAoJogo : MonoBehaviour
     {
         SceneManager.LoadScene("inicial_menu");
     }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene("gameover");
+    }
 }

@@ -12,6 +12,7 @@ public class CodigoErrado : MonoBehaviour
 
 {
     //private Touch toqueTela;
+    public VoltarAoJogo volta;
     public Sprite [] baterias = new Sprite[4];
     public Image bateriaImagem;
     public float tempoInicial, tempoStart;
@@ -33,12 +34,15 @@ public class CodigoErrado : MonoBehaviour
         if (!tempoAcabou)
         {
             ContagemRegressiva();
+        } else {
+            volta.GameOver();
         }
 
         if (bateria == 0)
         {
             //chamar game over aqui
             Debug.Log("Gameover");
+            volta.GameOver();
         }
 
     }
@@ -47,11 +51,11 @@ public class CodigoErrado : MonoBehaviour
     {
         tempoInicial -= 1 * Time.deltaTime;
         segundos.text = tempoInicial.ToString("0");
-        if (tempoInicial >= 30)
+        if (tempoInicial > 0)
         {
             tempoAcabou = false;
         }
-        if (tempoInicial < 30)
+        if (tempoInicial < 0)
             tempoAcabou = true;
     }
 
