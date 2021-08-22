@@ -7,10 +7,12 @@ public class PlayGame : MonoBehaviour {
 
         public GameObject PanelCredits;
         public GameObject PanelConfig;
+        public AudioSource Audio;
 
         public void StartGame() {
                     Debug.Log("Começa a cutscene!");
         }
+        
         public void ShowConfig() {
                if(PanelConfig != null) {
                         PanelConfig.SetActive(true);
@@ -50,12 +52,38 @@ public class PlayGame : MonoBehaviour {
               }
         }
         public void ChangeMusic() {
-              if (GameObject.Find("ButtonMusic").GetComponentInChildren<Text>().text == "Music ON") {
+              if(Audio.isPlaying) {
+                        Audio.Pause();
                         GameObject.Find("ButtonMusic").GetComponentInChildren<Text>().text = "Music OFF";
-                        Debug.Log("Music off");  
               } else {
+                        Audio.Play();
                         GameObject.Find("ButtonMusic").GetComponentInChildren<Text>().text = "Music ON";
-                        Debug.Log("Music on");  
               }
         }
+
+        public void OpenLinkAna() {
+               Application.OpenURL("https://www.linkedin.com/in/anasofiasilvestre/");
+        }
+        public void OpenLinkDana() {
+                Application.OpenURL("instagram.com/danaxbraga");
+        }
+        public void OpenLinkBruna() {
+                Application.OpenURL("https://instagram.com/arts.bruna.queiroz");
+        }
+        public void OpenLinkBell() {
+                Application.OpenURL("https://github.com/isarbela");
+        }
+        public void OpenLinkDandi() {
+                Application.OpenURL("https://piratadandi.wixsite.com/dandi");
+        }
+        public void OpenLinkKellen() {
+                Application.OpenURL("https://www.linkedin.com/in/kellen-karollyne-1681a9184/");
+        }
+        public void OpenLinkCharlotte() {
+                Application.OpenURL("https://www.instagram.com/charlottebrunna/");
+        }
+        public void OpenLinkHeloisa() {
+                Application.OpenURL("https://www.linkedin.com/in/helo%C3%ADsa-rodrigues-012a577b/");
+        }
+
 }
