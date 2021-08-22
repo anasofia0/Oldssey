@@ -14,4 +14,9 @@ public class VoltarAoJogo : MonoBehaviour
     {
         SceneManager.LoadScene("gameover");
     }
+
+    public void Vitoria()
+    {
+        SceneManager.LoadScene("Vitoria");
+    }
 }

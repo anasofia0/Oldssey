@@ -59,8 +59,10 @@ public class Inventory : MonoBehaviour
                 indexSenha++;
             }
             if(indexSenha >= 4){
+                podeBotar = false;
                 if(CompararArray()){
                     Debug.Log("GANHOU MINHE QUERIDE");
+                    codigoErrado.volta.Vitoria();
                     // ganhou
                     // chamar tela/cena de vitória aqui
                 } else {
