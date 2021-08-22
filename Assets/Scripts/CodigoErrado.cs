@@ -23,7 +23,7 @@ public class CodigoErrado : MonoBehaviour
 
     private void Start()
     {
-        toqueTela = new Touch { fingerId = -1 };
+
         tempoInicial = tempoStart;
         bateria = 4;
     }
@@ -35,39 +35,39 @@ public class CodigoErrado : MonoBehaviour
             ContagemRegressiva();
         }
 
-        if (player.CompareTag("Cestinha"))
+        if (GameObject.FindGameObjectWithTag("Cestinha"))
         {
             Inventorio++;
         }
         else
         {
-            
+
             bateria -= 1;
         }
 
-        if (player.CompareTag("Pacote_De_Leite"))
-        {
-            Inventorio++;
-            
-        }
-        else
-        {
-            
-            bateria -= 1;
-        }
-
-        if (player.CompareTag("Caixa_De_Supermercado"))
+        if (GameObject.FindGameObjectWithTag("Pacote_De_Leite"))
         {
             Inventorio++;
 
         }
         else
         {
-           
+
             bateria -= 1;
         }
 
-        if (player.CompareTag("Cartao_De_Credito"))
+        if (GameObject.FindGameObjectWithTag("Caixa_De_Supermercado"))
+        {
+            Inventorio++;
+
+        }
+        else
+        {
+
+            bateria -= 1;
+        }
+
+        if (GameObject.FindGameObjectWithTag("Cartao_De_Credito"))
         {
             Inventorio++;
 
@@ -85,37 +85,18 @@ public class CodigoErrado : MonoBehaviour
 
 
 
-    
 
-        if(Input.touchCount > 0)
+        void ContagemRegressiva()
         {
-            for(int a = 0; a < Input.touchCount; a++)
+            tempoInicial -= 1 * Time.deltaTime;
+            segundos.text = tempoInicial.ToString("0");
+            if (tempoInicial >= 30)
             {
-                if(toqueTela.fingerId == -1)
-                {
-                    if (Input.GetTouch(a).position.x < Screen.width / 2 && Input.GetTouch(a).position.y < Screen.height / 2)
-                    {
-                        toqueTela = Input.GetTouch(a);
-                    }
-                }
-                
-                    
+                tempoAcabou = false;
             }
+            if (tempoInicial < 30)
+                tempoAcabou = true;
         }
-    }
-
-         
-           
-
-    void ContagemRegressiva()
-    {
-        tempoInicial -= 1 * Time.deltaTime;
-        segundos.text = tempoInicial.ToString("0");
-        if(tempoInicial >= 30)
-        {
-            tempoAcabou = false;
-        }
-        if (tempoInicial < 30)
-            tempoAcabou = true;
     }
 }
+
