@@ -35,6 +35,7 @@ public class CodigoErrado : MonoBehaviour
         {
             ContagemRegressiva();
         } else {
+            Debug.Log("AAAAAAAAA");
             volta.GameOver();
         }
 
